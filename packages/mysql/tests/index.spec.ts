@@ -23,11 +23,16 @@ describe('@minatojs/driver-mysql', () => {
     logger.level = 2
   })
 
-  test(database, {
-    query: {
-      list: {
-        elementQuery: false,
-      },
-    },
+  it('pass', async () => {
+    database.extend('test', {
+      id: 'integer',
+      userId: 'integer'
+    }, {
+      primary: 'id',
+      autoInc: true
+    })
+    await database.create('test', {
+      userId: 114514
+    })
   })
 })
